@@ -1,3 +1,4 @@
+using SwaggerCSharp.Api.Filters;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen(options =>
 	
 	options.EnableAnnotations();
 	options.ExampleFilters();
+	options.ParameterFilter<CustomParameterFilter>();
 });
 // importante adicionar para os exemplos funcionarem
 builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>();

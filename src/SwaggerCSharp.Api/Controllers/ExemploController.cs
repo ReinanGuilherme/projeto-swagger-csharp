@@ -13,7 +13,7 @@ namespace SwaggerCSharp.Api.Controllers
 	{
 		[HttpGet("exemplo1")]
 		[SwaggerOperation(
-			Summary = "Obtém exemplo sumário e descrição usando Swagger.", 
+			Summary = "Obtém exemplo sumário e descrição usando Swagger.",
 			Description = "Este endpoint demonstra como adicionar sumário e descrição usando Swagger."
 		)]
 		public IActionResult Exemplo1()
@@ -49,6 +49,22 @@ namespace SwaggerCSharp.Api.Controllers
 		public IActionResult Exemplo3([FromBody] RequestExemplo3 request)
 		{
 			return Ok();
+		}
+
+		[HttpGet("exemplo4")]
+		[SwaggerOperation(
+			Summary = "Obtém uma request body de exemplo usando Swagger.",
+			Description = "Este endpoint demonstra como adicionar uma request body de exemplo usando Swagger."
+		)]
+		public IActionResult Exemplo4(
+			[SwaggerParameterExemplo("max", "4")] int limit1,
+			[SwaggerParameter("Número máximo de itens retornados")] int limit2)
+		{
+			return Ok(new
+			{
+				limit1 = limit1,
+				limit2 = limit2
+			});
 		}
 	}
 }

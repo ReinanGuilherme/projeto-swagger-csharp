@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SwaggerCSharp.Api.DTO.Requests;
 using SwaggerCSharp.Api.DTO.Responses;
 using SwaggerCSharp.Api.DTO.SwaggerExemplos;
 using Swashbuckle.AspNetCore.Annotations;
@@ -37,6 +38,17 @@ namespace SwaggerCSharp.Api.Controllers
 			};
 
 			return Ok(response);
+		}
+
+		[HttpPost("exemplo3")]
+		[SwaggerOperation(
+			Summary = "Obtém uma request body de exemplo usando Swagger.",
+			Description = "Este endpoint demonstra como adicionar uma request body de exemplo usando Swagger."
+		)]
+		[SwaggerRequestExample(typeof(RequestExemplo3), typeof(SwaggerRequestExemplo3))]
+		public IActionResult Exemplo3([FromBody] RequestExemplo3 request)
+		{
+			return Ok();
 		}
 	}
 }
